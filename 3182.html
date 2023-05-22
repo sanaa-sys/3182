@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>3182</title>
+    <title>Big Data Visualization methods</title>
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <!-- Import vega-embed -->
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <!-- Import pure.css -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        h1 {
+            font-weight: 900;
+        }
+
+        body {
+            background-color: #000000;
+        }
+
+        .page {
+            width: 850px;
+            background-color: white;
+            margin: auto;
+            padding: 50px;
+            padding-top: 35px;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .vis-container {
+            width: 100%;
+        }
+
+        .description h2, h1 {
+            margin-top: 0px;
+        }
+
+        .description-right {
+            padding-left: 20px;
+        }
+
+        .description-left {
+            padding-right: 20px;
+        }
+
+        .pure-g {
+            margin-bottom: 25px;
+        }
+
+        .small-font {
+            font-size: 14px;
+        }
+
+        #text {
+            width: 1000px;
+        }
+
+        p {
+            line-height: 1.8;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="page">
+        <div class="pure-g">
+            <div class="pure-u-1-3">
+                <img src="The-World-Bank-Logo.png" alt="img" / style="height: 100px; width: 200px;">
+            </div>
+            <div class="pure-u-2-3">
+                <h1>Big Data Visualization Methods</h1>
+            </div>
+            <div>
+
+            </div>
+            <div class="pure-g">
+                <div class="pure-u-1-2">
+                    <p>The World Bank is one of the world's largest producers of data for research. Along with UN, it has developed the Sustainable Development Goals (SDGs) which aim to assess a country's progress in ending poverty. The indicators measure the country's progress towards achieving the SDGs and we will be looking at health indicators worldwide.</p>
+                </div>
+                <div class="pure-u-1-2">
+                    <img src="SDG.png" alt="img" / style="height: 200px; width: 350px;">
+                </div>
+            </div>
+            <div class="pure-g">
+                <div class="pure-u-1-1">
+                    <h3 style="text-align: center;">Population</h3>
+                    <p>As of 2019, the world population is estimated to be 7 billion and is predicted to rise. This rise in population is attributed to many factors such as medical advancements and rise in agricultural productivity which has decreased mortality rate and famine all over the world.</p>
+                </div>
+                <div class="pure-u-1-1">
+                    <div id="vis1" class="vis-container"></div>
+                </div>
+            </div>
+            <div class="pure-g">
+                <div class="pure-u-1-3">
+                    <h3>Life Expentancy and Health Expenditure per Capita ($)</h3>
+                    <p>There is a positive correlation between Life Expentancy and Health Expenditure which means that countries that invest more money in healthcare are likely to have residents with longer life expectancy. It is also notable that developed countries have higher expenditure and life expectancy unlike developing countries which means that more effort has to be put in to improve the heathcare systems of developing countries. Note that India and China have high life expectancies but low expenditure per capita due to their high population.</p>
+                </div>
+                <div class="pure-u-2-3">
+                    <div id="vis3" class="vis-container"></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-2-3">
+                <div id="vis2" class="vis-container"></div>
+            </div>
+            <div class="pure-u-1-3">
+                <h3>Life Expentancy and Fertility Rate</h3>
+                <p>It is interesting to note that life expectancy increases with a decrease in fertility rate. This can be due to the fact that the energetic and metabolic costs from reproduction weakens the human body which increases fatality rate. Also, developed countries have higher life expentancy and lower fertility rate than developing countries. This can be due to increased literacy rate which involves women knowning and using more about contraceptives and other birth control options. Also women in these countries may have less societal burden to have children and can devote more time to themselves.</p>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1-3">
+                <div class="description description-left">
+                    <h2>Surgical Workforce and Physicians</h2>
+                    <p>It can be noticed that Low Income and Low Middle Income have severe shortages of specialised surgeons and physicans which explains low life expectancies often due to deaths among infants and newborns. The Lancet Comission on Global Surgery recommends at least 20 surgical workers per 10,1000 people and WHO recommends 4.5 physicans per 1,000 people. More funding have to be given to healthcare systems of these countries so that their residents get access to immaculate healthcare.</p>
+                </div>
+            </div>
+            <div class="pure-u-1-3">
+                <div id="vis4" class="vis-container"></div>
+            </div>
+            <div class="pure-u-1-3">
+                <div id="vis5" class="vis-container"></div>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1-1 small-font">
+                <p>This visualisation is created by <a href="https://github.com/sanaa-sys/3179" target="_blank">Ayesha Ali</a>.</p>
+                <p>To learn more about SDGs <a href="https://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank">click here</a>.</p>
+                <p>To have a look at World Bank Indicators <a href="https://data.worldbank.org/indicator" target="_blank">click here</a>.</p>
+            </div>
+        </div>
+        <div class="pure-u-1-3">
+            <div id="vis6" class="vis-container"></div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        var specVis1 = "./treemap.json";
+        var specVis2 = "./circlepack.json";
+        var specVis3 = "./sunburst.json";
+        var specVis4 = "./circlenetwork.json";
+        var specVis5 = "./parallelcoor.json";
+        var specVis6 = "./stream.json";
+        vegaEmbed('#vis1', specVis1).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis2', specVis2).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis3', specVis3).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis4', specVis4).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis5', specVis5).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis6', specVis6).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,175 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "A network diagram of software dependencies, with edges grouped via hierarchical edge bundling.",
+  "padding": 5,
+  "width": 720,
+  "height": 720,
+  "autosize": "none",
+  "signals": [
+     {
+      "name": "active", "value": null,
+      "on": [
+        { "events": "text:mouseover", "update": "datum.id" },
+        { "events": "mouseover[!event.item]", "update": "null" }
+      ]
+    }],
+
+  "data": [
+    {
+      "name": "tree",
+      "url": "data/flare.json",
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+        {
+          "type": "tree",
+          "method": "cluster",
+          "size": [1, 1],
+          "as": ["alpha", "beta", "depth", "children"]
+        },
+        {
+          "type": "formula",
+          "expr": "(0 + 360 * datum.alpha + 270) % 360",
+          "as": "angle"
+        },
+        {
+          "type": "formula",
+          "expr": "inrange(datum.angle, [90, 270])",
+          "as": "leftside"
+        },
+        {
+          "type": "formula",
+          "expr": "width / 2 + 280 * datum.beta * cos(PI * datum.angle / 180)",
+          "as": "x"
+        },
+        {
+          "type": "formula",
+          "expr": "height / 2 + 280 * datum.beta * sin(PI * datum.angle / 180)",
+          "as": "y"
+        }
+      ]
+    },
+    {
+      "name": "leaves",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "!datum.children"
+        }
+      ]
+    },
+    {
+      "name": "dependencies",
+      "url": "data/flare-dependencies.json",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "treePath('tree', datum.source, datum.target)",
+          "as": "treepath",
+          "initonly": true
+        }
+      ]
+    },
+    {
+      "name": "selected",
+      "source": "dependencies",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.source === active || datum.target === active"
+        }
+      ]
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "text",
+      "from": {"data": "leaves"},
+      "encode": {
+        "enter": {
+          "text": {"field": "name"},
+          "baseline": {"value": "middle"}
+        },
+        "update": {
+          "x": {"field": "x"},
+          "y": {"field": "y"},
+          "dx": {"signal": "11 * (datum.leftside ? -1 : 1)"},
+          "angle": {"signal": "datum.leftside ? datum.angle - 180 : datum.angle"},
+          "align": {"signal": "datum.leftside ? 'right' : 'left'"},
+          "fontSize": {"value": 8},
+          "fontWeight": [
+            {"test": "indata('selected', 'source', datum.id)", "value": "bold"},
+            {"test": "indata('selected', 'target', datum.id)", "value": "bold"},
+            {"value": null}
+          ],
+          "fill": [
+            {"test": "datum.id === active", "value": "black"},
+            {"test": "indata('selected', 'source', datum.id)", "value": "firebrick"},
+            {"test": "indata('selected', 'target', datum.id)", "value": "forestgreen"},
+            {"value": "black"}
+          ]
+        }
+      }
+    },
+    {
+      "type": "group",
+      "from": {
+        "facet": {
+          "name": "path",
+          "data": "dependencies",
+          "field": "treepath"
+        }
+      },
+      "marks": [
+        {
+          "type": "line",
+          "interactive": false,
+          "from": {"data": "path"},
+          "encode": {
+            "enter": {
+              "interpolate": {"value": "bundle"},
+              "strokeWidth": {"value": 1.5}
+            },
+            "update": {
+              "stroke": [
+                {"test": "parent.source === active", "value": "forestgreen"},
+                {"test": "parent.target === active", "value": "firebrick"},
+                {"value": "steelblue"}
+              ],
+              "strokeOpacity": [
+                {"test": "parent.source === active || parent.target === active", "value": 1},
+                {"value": 0.2}
+              ],
+              "tension": {"value": 0.85},
+              "x": {"field": "x"},
+              "y": {"field": "y"}
+            }
+          }
+        }
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": ["depends on", "imported by"],
+      "range": ["firebrick", "forestgreen"]
+    }
+  ],
+
+  "legends": [
+    {
+      "stroke": "color",
+      "orient": "bottom-right",
+      "title": "Dependencies",
+      "symbolType": "stroke"
+    }
+  ]
+}
