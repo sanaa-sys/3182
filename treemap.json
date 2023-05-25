@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "An example of treemap layout for hierarchical data.",
-  "width": 960,
+  "width": 800,
   "height": 500,
   "padding": 2.5,
   "autosize": "none",
