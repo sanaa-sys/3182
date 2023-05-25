@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "An example of a circle packing layout for hierarchical data.",
   "width": 600,
-  "height": 600,
+  "height": 300,
   "padding": 5,
   "autosize": "none",
 
