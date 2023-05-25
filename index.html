@@ -90,13 +90,13 @@
                     <p> Handling Big Data is one of the notable hurdles of the 21st century because of the large volume (Volume), inconsistency of data and multiple formats (Variety), and high computing speed (Velocity). But it is important to analyze Big Data to gain insights into multiple fields and discover research opportunities. Data visualization relies on human cognitive capacities to absorb visual information, making it a solution to facilitate meaningful analysis, accessibility, and interpretation of huge data. The goal is to compare visualization methods to see which of them satisfy all the Big Data criteria.</p>
                 </div>
                 <div class="pure-u-1-2">
-                    <img src="BigData1.jpg" alt="img" / style="height: 500px; width: 350px;margin-left: 50px;">
+                    <img src="BigData1.jpg" alt="img" / style="height: 400px; width: 350px;margin-left: 50px;">
                 </div>
             </div>
             <div class="pure-g">
                 <div class="pure-u-1-1">
-                    <h3 style="text-align: center;">Population</h3>
-                    <p>As of 2019, the world population is estimated to be 7 billion and is predicted to rise. This rise in population is attributed to many factors such as medical advancements and rise in agricultural productivity which has decreased mortality rate and famine all over the world.</p>
+                    <h3 style="text-align: center;">Treemap</h3>
+                    <p>This technique is based on filling hierarchical data starting with a root rectangle which is then divided into smaller rectangles. It does satisfy the volume criteria because the number of data layers depends on the volume of data and can show large volumes by iteratively adding a layer of data for each hierarchy. But this visualization technique can display only two data features: shape for volume and color for grouping so variety cannot be shown. Velocity is also not met as it shows data at one time only so cannot be used for data with time series or historical trends. A major limitation is that it can show hierarchical data only. </p>
                 </div>
                 <div class="pure-u-1-1">
                     <div id="vis1" class="vis-container"></div>
@@ -104,47 +104,60 @@
             </div>
             <div class="pure-g">
                 <div class="pure-u-1-3">
-                    <h3>Life Expentancy and Health Expenditure per Capita ($)</h3>
-                    <p>There is a positive correlation between Life Expentancy and Health Expenditure which means that countries that invest more money in healthcare are likely to have residents with longer life expectancy. It is also notable that developed countries have higher expenditure and life expectancy unlike developing countries which means that more effort has to be put in to improve the heathcare systems of developing countries. Note that India and China have high life expectancies but low expenditure per capita due to their high population.</p>
+                    <h3>Circle Packing</h3>
+                    <p>This technique is like a treemap except it uses circles as its main shape. Given that it has the same properties as a treemap, it satisfies the volume criteria only because the number of data layers depends on the volume of data.</p>
                 </div>
                 <div class="pure-u-2-3">
-                    <div id="vis3" class="vis-container"></div>
+                    <div id="vis2" class="vis-container"></div>
                 </div>
             </div>
 
         </div>
         <div class="pure-g">
             <div class="pure-u-2-3">
-                <div id="vis2" class="vis-container"></div>
+                <div id="vis3" class="vis-container"></div>
             </div>
             <div class="pure-u-1-3">
-                <h3>Life Expentancy and Fertility Rate</h3>
-                <p>It is interesting to note that life expectancy increases with a decrease in fertility rate. This can be due to the fact that the energetic and metabolic costs from reproduction weakens the human body which increases fatality rate. Also, developed countries have higher life expentancy and lower fertility rate than developing countries. This can be due to increased literacy rate which involves women knowning and using more about contraceptives and other birth control options. Also women in these countries may have less societal burden to have children and can devote more time to themselves.</p>
+                <h2>Sunburst</h2>
+                <p>This technique is also like a treemap except it uses radius and arc length instead of width and height. When the data changes, only the sector with new data must be changed by changing the radius. With animation, the criteria of data velocity can be shown. Given that it has the same properties as a treemap, it satisfies the volume criteria only because the number of data layers depends on the volume of data. Most humans can perceive it easily compared to the first two methods. </p>
             </div>
         </div>
         <div class="pure-g">
             <div class="pure-u-1-3">
                 <div class="description description-left">
-                    <h2>Surgical Workforce and Physicians</h2>
-                    <p>It can be noticed that Low Income and Low Middle Income have severe shortages of specialised surgeons and physicans which explains low life expectancies often due to deaths among infants and newborns. The Lancet Comission on Global Surgery recommends at least 20 surgical workers per 10,1000 people and WHO recommends 4.5 physicans per 1,000 people. More funding have to be given to healthcare systems of these countries so that their residents get access to immaculate healthcare.</p>
+                    <h2>Circular Network Diagram</h2>
+                    <p>In this technique, data attributes are put about a circle and connected by curves based on how related they are. The different line width or color saturation is the magnitude of relativeness. With interactions, you can choose the relations you want. Aggregated data can be represented as arc sets so that analysts can retrieve information about object relations. The technique can be applied to massive data volume as data attributes can be put around the circle radius and attribute arc area. Also, more data attributes can be shown near an arc and multiple factors in a diagram and make relations between them. This can make it difficult to get insights but in some cases, with this approach, the analyst can get sufficient information. With this the variety criterion is satisfied. Also, with every change in data, the whole diagram must be changed.</p>
                 </div>
             </div>
-            <div class="pure-u-1-3">
+            <div class="pure-u-2-3">
                 <div id="vis4" class="vis-container"></div>
             </div>
-            <div class="pure-u-1-3">
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-2-3">
                 <div id="vis5" class="vis-container"></div>
+            </div>
+            <div class="pure-u-1-3">
+                <h2>Parallel Coordinates</h2>
+                <p>This technique can support multiple data attributes for different data objects. The data factors that must be analyzed are put on one axis and the corresponding data values of the data object are put on the other axis. A data object is displayed connected by spanning lines which display its context of other objects. Only thick lines are used to show individual data with which the data volume criteria are met. The 2D parallel coordinates can be extended to 3D parallel coordinates in which the axes are equally divided with the focus axis in the center of a circle. A data item is shown as line segments passing via all axes. Several factors can be handled this way for a massive number of data objects in a single screen, so it satisfies data variety criteria. Data velocity can be shown as a factor in 3D coordinates.</p>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1-3">
+                <div class="description description-left">
+                    <h2>Steamgraph</h2>
+                    <p>This technique is a variation of a stacked area chart, which is shown around a central axis that causes the flowing shape. In this way, different trends or events can be displayed via a timeline. The method shows each time series along with the sum of each time series as the height of each layer. It supports the data velocity criteria and as it works for large datasets it does satisfy volume but since it is 1D, it cannot satisfy the data variety criteria.</p>
+                </div>
+            </div>
+            <div class="pure-u-2-3">
+                <div id="vis6" class="vis-container"></div>
             </div>
         </div>
         <div class="pure-g">
             <div class="pure-u-1-1 small-font">
-                <p>This visualisation is created by <a href="https://github.com/sanaa-sys/3179" target="_blank">Ayesha Ali</a>.</p>
-                <p>To learn more about SDGs <a href="https://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank">click here</a>.</p>
-                <p>To have a look at World Bank Indicators <a href="https://data.worldbank.org/indicator" target="_blank">click here</a>.</p>
+                <p>This visualisation is created by <a href="https://github.com/sanaa-sys/3182" target="_blank">Ayesha Ali</a>.</p>
+                <p>To read the paper in these visualizations are mentioned <a href="https://www.researchgate.net/publication/275468420_Analytical_Review_of_Data_Visualization_Methods_in_Application_to_Big_Data" target="_blank">click here</a>.</p>
             </div>
-        </div>
-        <div class="pure-u-1-3">
-            <div id="vis6" class="vis-container"></div>
         </div>
     </div>
     
