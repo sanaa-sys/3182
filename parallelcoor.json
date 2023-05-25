@@ -4,7 +4,7 @@
   "data": {
     "url": "data/penguins.json"
   },
-  "width": 300,
+  "width": 400,
   "height": 600,
   "transform": [
     {"filter": "datum['Beak Length (mm)']"},
