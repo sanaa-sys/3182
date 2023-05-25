@@ -1,8 +1,6 @@
-//Ayesha Ali
-//Last edited: 25/5/2023
-//Inspired by: https://vega.github.io/vega/examples/treemap/
+
 {
-  //Defining basic schema details
+ 
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Treemap for hierarchical data.",
   "width": 800,
@@ -43,7 +41,7 @@
       "transform": [{ "type": "filter", "expr": "!datum.children" }]
     }
   ],
-//defining colour scheme, rectangle size and text to be shown
+
   "scales": [
     {
       "name": "color",
